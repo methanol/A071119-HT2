@@ -1,0 +1,89 @@
+:host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    height: 60px;
+    margin: -8px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo:hover {
+    opacity: 0.8;
+  }
+
+  .search-area {
+	  margin-top: 100px;
+	  width: 500px;
+	  margin-left: auto;
+	  margin-right: auto;
+	  margin-bottom: 50px;
+  }
+
+  .search-area > button {
+	  margin-left: 20px;
+	  height: 30px;
+  }
+
+  .search-area > input {
+	  width: 300px;
+	  height: 30px;
+  }
+
+  .result-area {
+	  display: flex;
+	  flex-direction: row;
+	  flex-wrap: wrap;
+	  justify-content: space-around;
+  }
+
+  .result-item {
+	  width: 400px;
+	  height: 150px;
+	  background-color: rgb(150, 176, 231);
+	  margin: 10px;
+	  display: flex;
+	  flex-direction: row;
+	  border-top-right-radius: 3%;
+	  border-bottom-right-radius: 3%
+  }
+
+  .result-card {
+	display: flex;
+	flex-direction: row;
+  }
