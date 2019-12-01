@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
 export class ProjectCardComponent {
 
   @Input()
-  public project: {};
+  public project: any;
 }
