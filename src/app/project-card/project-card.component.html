@@ -1,7 +1,7 @@
 <div>
 	<img [src]="project.owner.avatar_url" height="150px"/>
 </div>
-<div>
+<div class="info-box">
 	<ul>
 		<li>
 			<b>name:</b> {{project.name}}
@@ -16,4 +16,7 @@
 			<b>language:</b> {{project.language}}
 		</li>
 	</ul>
+	<button class="repo-link" >
+		<a href={{project.html_url}} target="_blank">go to Github</a>
+	</button>	
 </div>

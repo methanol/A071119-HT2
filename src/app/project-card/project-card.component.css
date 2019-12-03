@@ -1,0 +1,28 @@
+.repo-link {
+	margin: auto;
+	background-color: rgb(24, 27, 211);
+	width: 150px;
+	border-radius: 3%;
+	
+}
+
+.repo-link a {
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+	margin: auto;
+	font-size: 20px;
+	font-style: italic;
+}
+
+.info-box {
+	width: 250px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.info-box button {
+	align-self: flex-end;
+}
