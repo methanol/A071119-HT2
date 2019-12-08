@@ -57,7 +57,10 @@
 
   .search-area > button {
 	  margin-left: 20px;
-	  height: 30px;
+    height: 30px;
+    background-color: #1976d2;
+    color: white;
+    font-weight: bold;
   }
 
   .search-area > input {
