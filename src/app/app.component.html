@@ -31,12 +31,13 @@
 </div>
 
 <div class="search-area">
-  <input type="text" #searchField placeholder="react" (keydown.enter) = "setSearchKey($event.target.value);">
-  <button (click) = "setSearchKey(searchField.value);">Find something</button>
+  <input type="text" #searchField placeholder="react" (input) = "setSearchKey($event.target.value)">
+  <button (click) = "setSearchKey(searchField.value);">Find something new</button>
+  <button (click) = "searchField.value = '';">Clear field</button>
 </div>
 
-<div class="result-area" *ngIf="results$ | async as results; else loader">
-    <div class="result-item" *ngFor="let project of results.items">
+<div class="result-area" *ngIf="results$ | async; else loader">
+    <div class="result-item" *ngFor="let project of projects">
         <app-project-card class="result-card" [project] = project></app-project-card>
     </div>
 </div>

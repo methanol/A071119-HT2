@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
@@ -21,8 +21,11 @@ import { ProjectCardComponent } from './project-card/project-card.component';
     NoopAnimationsModule,
     SharedModule
   ],
-  providers: [GitDataService,
-              {provide: BASE_URL_TOKEN, useValue: BASE_URL}],
+  providers: [{provide: HTTP_INTERCEPTORS,
+               useClass: GitDataService,
+               multi: true},
+              {provide: BASE_URL_TOKEN, 
+               useValue: BASE_URL}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

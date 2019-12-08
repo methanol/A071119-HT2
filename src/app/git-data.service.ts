@@ -1,18 +1,28 @@
-import { Injectable, Inject } from '@angular/core';
-import { BASE_URL_TOKEN } from './config';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse } from '@angular/common/http';
 import { Observable } from "rxjs";
+import { filter, map } from 'rxjs/operators';
 
 @Injectable()
 
-export class GitDataService {
+export class GitDataService implements HttpInterceptor {
 
-  constructor(private http: HttpClient,
-    @Inject(BASE_URL_TOKEN) 
-    private baseUrl: string
-  ) { }
+  constructor() { }
 
-  getProjects(searchTerm: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}=${searchTerm}`);
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const request = req.clone();
+    return next.handle(request)
+    .pipe(
+      filter(this.isHttpResponse),
+      map(res => res.clone({body: res.body && res.body.items}))
+    );
+
+  }
+
+  private isHttpResponse(event: HttpEvent<any>): event is HttpResponse<any> {
+    if (event instanceof HttpResponse) {
+      return true;
+    }
+    return false;
   }
 }
