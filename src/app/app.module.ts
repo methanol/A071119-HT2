@@ -21,11 +21,8 @@ import { ProjectCardComponent } from './project-card/project-card.component';
     NoopAnimationsModule,
     SharedModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS,
-               useClass: GitDataService,
-               multi: true},
-              {provide: BASE_URL_TOKEN, 
-               useValue: BASE_URL}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: GitDataService, multi: true},
+              {provide: BASE_URL_TOKEN, useValue: BASE_URL}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

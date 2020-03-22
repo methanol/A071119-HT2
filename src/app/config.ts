@@ -9,4 +9,5 @@ export interface IProject {
 	'html_url': string;
 	'watchers': number;
 	'language': string;
+	'owner': {avatar_url: string};
   }

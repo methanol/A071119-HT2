@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IProject } from '../config';
 
 @Component({
   selector: 'app-project-card',
@@ -8,5 +9,5 @@ import { Component, Input } from '@angular/core';
 export class ProjectCardComponent {
 
   @Input()
-  public project: any;
+  public project: IProject;
 }
