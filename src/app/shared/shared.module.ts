@@ -4,6 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   exports: [
@@ -11,7 +12,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 	MatButtonModule,
 	MatCardModule,
 	MatListModule,
-	MatProgressSpinnerModule
+	MatProgressSpinnerModule,
+	MatPaginatorModule
   ]
 })
 export class SharedModule {

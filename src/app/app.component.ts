@@ -3,6 +3,7 @@ import { Observable, Subject, Observer } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { BASE_URL_TOKEN, IProject } from './config';
 import { switchMap, debounceTime } from 'rxjs/operators';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,9 @@ export class AppComponent implements OnInit {
   public results$: Observable<IProject[]>;
   public isLoaderShown: boolean = false;
   public projects: IProject[] = [];
+  public pageEvent: PageEvent;
+  public pageCurrentIndex: number = 0;
+  public pageCurrentSize: number = 10;
 
   // @ViewChild('searchField', {static: true})
   // private searchField: HTMLInputElement;
@@ -36,7 +40,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.inputFlow$
     .pipe(
-      debounceTime(800),
+      debounceTime(500),
       switchMap((searchTerm: string) => this.results$ = this.getProjects(searchTerm))
     )
     .subscribe(this.searchResultObserver)

@@ -35,9 +35,21 @@
   <button (click) = "searchField.value = '';">Clear field</button>
 </div>
 
+<mat-paginator [length]="projects.length"
+               [pageSize]="pageCurrentSize"
+               [pageSizeOptions]="[5, 10, 25, 100]"
+               (page)="pageEvent = $event; pageCurrentIndex = $event.pageIndex; pageCurrentSize = $event.pageSize">
+</mat-paginator>
+
 <div class="result-area" *ngIf="results$ | async; else loader">
-      <app-project-card *ngFor="let project of projects" [ngClass]="{'result-item': true}" [project] = project></app-project-card>
+      <app-project-card 
+      *ngFor="let project of projects.slice(pageCurrentIndex == 0 ? pageCurrentIndex : pageCurrentIndex * pageCurrentSize + 1, 
+      pageCurrentIndex === 0 ? pageCurrentSize : (1 + pageCurrentIndex) * pageCurrentSize + 1)" 
+      [ngClass]="{'result-item': true}" 
+      [project] = project>
+    </app-project-card>
 </div>
+
 <ng-template #loader>
     <div *ngIf="isLoaderShown" class="load-container">
       <mat-spinner [mode]="'indeterminate'"></mat-spinner>
