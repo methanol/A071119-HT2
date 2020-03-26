@@ -9,11 +9,13 @@ import { GitDataService } from './git-data.service';
 import { BASE_URL, BASE_URL_TOKEN } from './config';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectCardComponent } from './project-card/project-card.component';
+import { PageFilterPipe } from './page-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProjectCardComponent
+    ProjectCardComponent,
+    PageFilterPipe
   ],
   imports: [
     BrowserModule,

@@ -102,3 +102,7 @@
     margin: auto;
     top: 40%;
   }
+
+  .paginator {
+    margin: auto 30px;
+  }
