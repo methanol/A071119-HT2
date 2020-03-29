@@ -1,16 +1,16 @@
-<mat-card style="background-color: rgb(43, 106, 241)">
+<mat-card class="info-box">
 	<mat-card-title>{{project.name}}</mat-card-title>
 	<img mat-card-image [src]="project.owner.avatar_url" width="100px"/>
 	<mat-card-content>
 		<mat-list>
 			<mat-list-item>
-				<b>id:</b>{{project.id}} 
+				<b>id</b>{{': ' + project.id}} 
 			</mat-list-item>
 			<mat-list-item>
-				<b>watchers:</b> {{project.watchers}}
+				<b>watchers</b>{{': ' + project.watchers}}
 			</mat-list-item>
 			<mat-list-item>
-				<b>language:</b> {{project.language}}
+				<b>language</b>{{': ' + project.language}}
 			</mat-list-item>
 		</mat-list>
 	</mat-card-content>
@@ -20,27 +20,4 @@
 		</button>	
 	</mat-card-actions>
 </mat-card>
-
-<!-- <div>
-	<img [src]="project.owner.avatar_url" height="150px"/>
-</div>
-<div class="info-box">
-	<ul>
-		<li>
-			<b>name:</b> {{project.name}}
-		</li>
-		<li>
-			<b>id:</b> {{project.id}}
-		</li>
-		<li>
-			<b>watchers:</b> {{project.watchers}}
-		</li>
-		<li>
-			<b>language:</b> {{project.language}}
-		</li>
-	</ul>
-	<button mat-raised-button [class.repo-link]="true" >
-		<a href={{project.html_url}} target="_blank">go to Github</a>
-	</button>	
-</div> -->
 

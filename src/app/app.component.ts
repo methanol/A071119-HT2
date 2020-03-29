@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { Observable, Subject, Observer } from 'rxjs';
+import { Observable, Subject, Observer, fromEvent } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { BASE_URL_TOKEN, IProject } from './config';
-import { switchMap, debounceTime } from 'rxjs/operators';
+import { switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { PageEvent } from '@angular/material/paginator';
 
 @Component({
@@ -13,7 +13,7 @@ import { PageEvent } from '@angular/material/paginator';
 
 export class AppComponent implements OnInit {
   public title = 'HT';
-  public results$: Observable<IProject[]>;
+  //public results$: Observable<IProject[]>;
   public isLoaderShown: boolean = false;
   public projects: IProject[] = [];
   public pageEvent: PageEvent;
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   // @ViewChild('searchField', {static: true})
   // private searchField: HTMLInputElement;
 
-  private inputFlow$ = new Subject();
+  public inputFlow$ = new Subject();
   //private inputFlow$ = fromEvent(this.searchField, 'input');
 
   private searchResultObserver: Observer<[]> = {
@@ -41,7 +41,8 @@ export class AppComponent implements OnInit {
     this.inputFlow$
     .pipe(
       debounceTime(500),
-      switchMap((searchTerm: string) => this.results$ = this.getProjects(searchTerm))
+      distinctUntilChanged(),
+      switchMap((searchTerm: string) => this.getProjects(searchTerm))
     )
     .subscribe(this.searchResultObserver)
   }

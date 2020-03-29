@@ -7,19 +7,6 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
-  }
-
-  p {
-    margin: 0;
-  }
-
   .spacer {
     flex: 1;
   }
@@ -81,13 +68,6 @@
     height: 600px;
     margin-bottom: 20px;
     padding: 20px;
-	  /* background-color: rgb(43, 106, 241);
-	  
-	  display: flex;
-	  flex-direction: row; */
-	  /*border-top-right-radius: 3%;
-    border-bottom-right-radius: 3%;
-    border-radius: 3%; */
   }
 
   .load-container {
@@ -98,6 +78,7 @@
     bottom: 0;
     background-color: rgba(0,0,0, 0.2);
   }
+  
   .load-container mat-spinner {
     margin: auto;
     top: 40%;
@@ -105,4 +86,7 @@
 
   .paginator {
     margin: auto 30px;
+    background-color: #1976d2;
+    color: white;
+    min-width: 300px
   }

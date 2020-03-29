@@ -2,25 +2,23 @@
 	margin-bottom: 20px;
 	background-color: rgb(24, 27, 211);
 	width: 150px;
-	
+}
+
+mat-card-actions {
+	margin-left: 15px;
 }
 
 .repo-link a {
-	/* display: inline-block;
-	text-align: center; */
 	text-decoration: none;
 	color: white;
-	/* margin: auto; */
 	font-size: 20px;
 }
 
 .info-box {
-	width: 250px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+	background-color: rgb(43, 106, 241)
 }
 
-.info-box button {
-	align-self: flex-end;
+.info-box mat-card-title {
+	width: 200px;
+	text-align: center;
 }
