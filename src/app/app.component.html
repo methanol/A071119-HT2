@@ -41,7 +41,7 @@
                (page)="pageEvent = $event; pageCurrentIndex = $event.pageIndex; pageCurrentSize = $event.pageSize">
 </mat-paginator>
 
-<div class="result-area" *ngIf="inputFlow$ | async; else loader">
+<div class="result-area" *ngIf="inputFlow$ | async">
       <app-project-card 
       *ngFor="let project of projects | pageFilter : pageCurrentIndex : pageCurrentSize" 
       [ngClass]="{'result-item': true}" 
@@ -49,11 +49,9 @@
     </app-project-card>
 </div>
 
-<ng-template #loader>
-    <div *ngIf="isLoaderShown" class="load-container">
-      <mat-spinner></mat-spinner>
-    </div>
-</ng-template>
+<div *ngIf="isLoaderShown" class="load-container">
+  <mat-spinner color = "accent"></mat-spinner>
+</div>
 
 
 

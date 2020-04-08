@@ -2,7 +2,7 @@ import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { Observable, Subject, Observer, fromEvent } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { BASE_URL_TOKEN, IProject } from './config';
-import { switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { switchMap, debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { PageEvent } from '@angular/material/paginator';
 
 @Component({
@@ -13,18 +13,12 @@ import { PageEvent } from '@angular/material/paginator';
 
 export class AppComponent implements OnInit {
   public title = 'HT';
-  //public results$: Observable<IProject[]>;
   public isLoaderShown: boolean = false;
   public projects: IProject[] = [];
   public pageEvent: PageEvent;
   public pageCurrentIndex: number = 0;
   public pageCurrentSize: number = 10;
-
-  // @ViewChild('searchField', {static: true})
-  // private searchField: HTMLInputElement;
-
   public inputFlow$ = new Subject();
-  //private inputFlow$ = fromEvent(this.searchField, 'input');
 
   private searchResultObserver: Observer<[]> = {
     next: (res: []) => this.projects = res,
@@ -40,9 +34,11 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.inputFlow$
     .pipe(
-      debounceTime(500),
+      debounceTime(800),
       distinctUntilChanged(),
-      switchMap((searchTerm: string) => this.getProjects(searchTerm))
+      tap(() => this.isLoaderShown = true),
+      switchMap((searchTerm: string) => this.getProjects(searchTerm)),
+      tap(() => this.isLoaderShown = false)
     )
     .subscribe(this.searchResultObserver)
   }
@@ -55,7 +51,6 @@ export class AppComponent implements OnInit {
     if (!key.match(/\w/)) {
       return;
     }
-    this.isLoaderShown = true;
     this.inputFlow$.next(key);
   }
 }
